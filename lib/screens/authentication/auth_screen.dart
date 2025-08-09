@@ -69,11 +69,13 @@ class _AuthScreenState extends State<AuthScreen> {
 
         if (response.statusCode == 200 || response.statusCode == 201) {
           final responseBody = jsonDecode(response.body);
+          final userId = responseBody['user_id'];
           final token = responseBody['token'];
           final username = _uniqueIdController.text;
+          final user = User(id: userId, username: username);
 
           // If successful, log in and navigate to the dashboard
-          appState.login(token, username);
+          appState.login(token, user);
 
           MessageSnackbar(
             message:
