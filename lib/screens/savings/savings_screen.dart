@@ -68,7 +68,7 @@ class _SavingsScreenState extends State<SavingsScreen> {
   // ADDED: A method to create a new savings goal via an API call
   Future<void> _addSavingsGoal(String goalName, double targetAmount) async {
     final appState = Provider.of<AppState>(context, listen: false);
-    const String baseUrl = 'http://127.0.0.1:8000/api';
+    const String baseUrl = 'http://127.0.0.1:8000/api/transactions';
     const String savingsUrl = '$baseUrl/savings_goals/';
 
     try {
@@ -105,7 +105,7 @@ class _SavingsScreenState extends State<SavingsScreen> {
   // ADDED: A method to update an existing savings goal by adding funds to it.
   Future<void> _addFundsToGoal(int goalId, double amountToAdd) async {
     final appState = Provider.of<AppState>(context, listen: false);
-    const String baseUrl = 'http://127.0.0.1:8000/api';
+    const String baseUrl = 'http://127.0.0.1:8000/api/transactions';
     final String savingsUrl = '$baseUrl/savings_goals/$goalId/';
 
     try {

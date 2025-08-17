@@ -22,7 +22,7 @@ class TransactionHistoryScreen extends StatefulWidget {
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   Future<List<dynamic>> _fetchTransactions(BuildContext context) async {
     final appState = Provider.of<AppState>(context, listen: false);
-    const String baseUrl = 'http://127.0.0.1:8000/api';
+    const String baseUrl = 'http://127.0.0.1:8000/api/transactions';
     const String transactionsUrl = '$baseUrl/transactions/';
 
     final Map<String, String> headers = {
@@ -55,28 +55,28 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
         {
           'id': 1,
           'description': 'Monthly Dues',
-          'amount': 5000.00,
+          'amount': 0000.00,
           'transaction_type': 'DEBIT',
           'date': '2025-07-25T10:00:00Z',
         },
         {
           'id': 2,
           'description': 'Loan Repayment',
-          'amount': 15000.00,
+          'amount': 00000.00,
           'transaction_type': 'DEBIT',
           'date': '2025-07-20T12:30:00Z',
         },
         {
           'id': 3,
           'description': 'Savings Deposit',
-          'amount': 20000.00,
+          'amount': 00000.00,
           'transaction_type': 'DEBIT',
           'date': '2025-07-15T15:45:00Z',
         },
         {
           'id': 4,
           'description': 'Loan Disbursement',
-          'amount': 250000.00,
+          'amount': 000000.00,
           'transaction_type': 'CREDIT',
           'date': '2025-07-10T09:00:00Z',
         },

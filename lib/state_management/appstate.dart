@@ -1,18 +1,7 @@
 // lib/app_state.dart
 
+import 'package:cooperative_market/models/user/user_model.dart';
 import 'package:flutter/material.dart';
-
-// ADDED: A simple User model to hold user data.
-class User {
-  final int id;
-  final String username;
-
-  User({required this.id, required this.username});
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(id: json['id'], username: json['username']);
-  }
-}
 
 // A provider class for managing the app's state, such as authentication.
 class AppState extends ChangeNotifier {
@@ -20,6 +9,7 @@ class AppState extends ChangeNotifier {
   String? _authToken;
   User? _currentUser;
   bool _isLoading = false;
+  bool get isAuthenticated => _authToken != null;
 
   bool get isLoggedIn => _isLoggedIn;
   String? get authToken => _authToken;

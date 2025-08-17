@@ -20,8 +20,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // UPDATED: A function to fetch dashboard data from the new backend API endpoint.
   Future<Map<String, dynamic>> _fetchDashboardData(BuildContext context) async {
     final appState = Provider.of<AppState>(context, listen: false);
-    const String baseUrl = 'http://127.0.0.1:8000/api';
-    const String dashboardUrl = '$baseUrl/dashboard_summary/';
+    const String baseUrl = 'http://127.0.0.1:8000/api/transactions';
+    const String dashboardUrl = '$baseUrl/dashboard/';
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -61,7 +61,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Dashboard')),
       body: FutureBuilder(
         future: _fetchDashboardData(context),
         builder: (context, snapshot) {

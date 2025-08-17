@@ -1,7 +1,15 @@
 // lib/main.dart
 
+import 'package:cooperative_market/route/routes.dart';
 import 'package:cooperative_market/screens/authentication/auth_screen.dart';
+import 'package:cooperative_market/screens/authentication/login_screen.dart';
+import 'package:cooperative_market/screens/authentication/register_screen.dart';
 import 'package:cooperative_market/screens/dasboard/dasboard_screen.dart';
+import 'package:cooperative_market/screens/main/main_screen.dart';
+import 'package:cooperative_market/screens/market/market_place.dart';
+import 'package:cooperative_market/screens/profile/profile_screen.dart';
+import 'package:cooperative_market/screens/savings/savings_screen.dart';
+import 'package:cooperative_market/screens/transactions/transaction_history_screen.dart';
 import 'package:cooperative_market/state_management/appstate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +52,7 @@ class FRINCooperativeApp extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           ),
         ),
+
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.white,
@@ -53,6 +62,19 @@ class FRINCooperativeApp extends StatelessWidget {
           ),
         ),
       ),
+
+      routes: {
+        AppRoutes.login: (context) => const LoginScreen(),
+        AppRoutes.register: (context) => const RegisterScreen(),
+        AppRoutes.dashboard: (context) => const DashboardScreen(),
+        AppRoutes.transactions: (context) => const TransactionHistoryScreen(),
+        AppRoutes.savings: (context) => const SavingsScreen(),
+        AppRoutes.profile: (context) => const ProfileScreen(),
+        AppRoutes.market: (context) => const MarketplaceScreen(),
+        AppRoutes.home: (context) => const MainScreen(),
+
+        // AppRoutes.onboarding: (context) => const OnboardingScreen(),
+      },
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: const Color(0xFF1A202C),
@@ -83,10 +105,10 @@ class FRINCooperativeApp extends StatelessWidget {
       ),
       home: Consumer<AppState>(
         builder: (context, appState, child) {
-          if (appState.isLoggedIn) {
+          if (appState.isAuthenticated) {
             return const DashboardScreen();
           } else {
-            return const AuthScreen();
+            return const AuthWrapper();
           }
         },
       ),
